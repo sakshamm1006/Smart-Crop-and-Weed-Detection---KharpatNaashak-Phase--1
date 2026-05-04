@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ML / Project specific
+*.pt
+*.weights
+*.zip
+data/
+dataset/
+runs/
+temp*
+output*
+*.mp4
+*.avi
