@@ -369,7 +369,7 @@ The primary contributions of this project include:
 
 Proper credit is given to the original implementation and research resources that inspired the base detection framework.
 
-> 🔗 Original reference/source: [[Add GitHub repository or source link here](https://github.com/ravirajsinh45/Crop_and_weed_detection)
+> 🔗 Original reference/source: [[ GitHub repository ]](https://github.com/ravirajsinh45/Crop_and_weed_detection)
 
 
 ## 👨‍💻 Authors & Contributors
