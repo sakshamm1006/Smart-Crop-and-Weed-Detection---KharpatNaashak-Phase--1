@@ -46,36 +46,150 @@ The goal of this project is to build an **automated detection system** that:
 
 ## 🧠 Methodology / Approach
 
-The system follows a structured deep learning pipeline:
+The development of this project followed a structured deep learning and system integration pipeline focused on real-time agricultural weed detection.
+
+Instead of training an object detection model entirely from scratch, this project utilized a **previously trained YOLOv3 weed detection model** and further adapted it for the required agricultural detection tasks through fine-tuning and application-level integration.
+
+The primary focus of the project was on:
+
+* Fine-tuning and optimizing the detection model
+* Building a complete real-time detection system
+* Integrating multiple input modes
+* Developing an interactive and user-friendly deployment interface
+
+The overall methodology can be divided into the following stages:
+
+---
 
 ### 1. Model Selection
 
-YOLOv3 was chosen for:
+YOLOv3 (You Only Look Once Version 3) was selected as the core object detection architecture because of its:
 
 * Real-time detection capability
-* High accuracy
-* Efficiency in multi-object detection
+* High detection speed
+* Strong performance in multi-object detection tasks
+* Suitability for computer vision applications requiring fast inference
 
-### 2. Fine-Tuning
+Since YOLOv3 is widely used for real-time object detection systems, it was considered an appropriate choice for agricultural field analysis.
 
-* Used **pre-trained YOLOv3 weights**
-* Fine-tuned on a custom agricultural dataset
-* Classes:
+---
 
-  * Crop 🌾
-  * Weed 🌿
+### 2. Fine-Tuning of Existing Model
 
-### 3. Detection Pipeline
+Rather than building a new model architecture from the ground up, an already trained YOLOv3 weed detection model was used as the base model.
 
-* Image preprocessing using OpenCV
-* Forward pass through YOLO network
-* Bounding box extraction
-* **Non-Max Suppression (NMS)** to remove duplicates
+The model was then fine-tuned on the agricultural dataset to improve its adaptability and performance for crop and weed detection.
 
-### 4. UI Integration
+This process involved:
 
-* Built using **Streamlit**
-* Allows real-time interaction and visualization
+* Configuring the model for the required classes
+* Adjusting training parameters
+* Testing detection performance on field images
+* Validating prediction outputs
+
+The objective was to adapt the model effectively for practical agricultural use cases while leveraging the strengths of transfer learning and pre-trained weights.
+
+---
+
+### 3. Dataset Preparation
+
+The dataset consisted of annotated agricultural images containing crops and weeds.
+
+The preparation process included:
+
+* Organizing images and labels
+* Using YOLO annotation format
+* Normalizing bounding box coordinates
+* Separating data for training and validation
+
+Each object in the images was labeled as either:
+
+* Crop 🌾
+* Weed 🌿
+
+Proper dataset formatting was essential to ensure compatibility with the YOLOv3 detection pipeline.
+
+---
+
+### 4. Detection Pipeline
+
+The detection system was implemented using OpenCV and the YOLOv3 inference pipeline.
+
+The workflow included:
+
+* Reading image/video frames
+* Preprocessing frames using blob generation
+* Passing inputs through the YOLO network
+* Extracting object predictions and confidence scores
+* Applying Non-Max Suppression (NMS) to remove duplicate detections
+
+Bounding boxes were drawn around detected crops and weeds with separate labels and color coding for easier visualization.
+
+---
+
+### 5. Real-Time Application Development
+
+To make the project interactive and practical, the detection pipeline was integrated into a web-based application using Streamlit.
+
+The application supports multiple modes:
+
+* 🖼 Image Detection
+* 🎥 Video Detection
+* 📷 Webcam-Based Real-Time Detection
+
+The Streamlit interface allows users to:
+
+* Upload images and videos
+* Capture frames using webcam
+* View live detection results
+* Analyze crop and weed distribution
+
+This transformed the project from a simple machine learning model into a complete end-to-end AI application.
+
+---
+
+### 6. Analytical Features
+
+In addition to object detection, several analytical features were added to improve usability and interpretation of results.
+
+These include:
+
+* Crop count
+* Weed count
+* Weed density estimation
+* Graphical visualization of detections
+* Downloadable detection reports
+
+These features help users better understand field conditions and make data-driven agricultural decisions.
+
+---
+
+### 7. Performance Evaluation
+
+The model’s performance was evaluated using standard object detection metrics such as:
+
+* mAP (Mean Average Precision)
+* Precision
+* Recall
+* Confusion Matrix Analysis
+
+Training graphs and confusion matrices were used to analyze model learning behavior and classification performance.
+
+---
+
+### 8. System Integration Focus
+
+A major objective of this project was not only model adaptation but also the creation of a deployable and user-friendly system.
+
+Therefore, emphasis was placed on:
+
+* Real-time usability
+* Interactive UI development
+* Multiple input support
+* Practical deployment workflow
+
+The final system demonstrates how deep learning and computer vision can be integrated into intelligent agricultural applications for precision farming.
+
 
 ---
 
@@ -87,6 +201,8 @@ YOLOv3 was chosen for:
 
   * Crop
   * Weed
+ 
+** Dataset Link** : https://www.kaggle.com/datasets/ravirajsinh45/crop-and-weed-detection-data-with-bounding-boxes
 
 ---
 
@@ -163,6 +279,18 @@ The system generates a detailed report including crop count, weed count, and act
 * NumPy / Pandas
 
 ---
+## 📦 Model Weights
+
+The model weight files are not included in this repository due to GitHub file size limitations.
+
+Both the pre-trained YOLOv3 weights and the fine-tuned model (`fine tune.pt`) can be downloaded from the Google Drive folder below:
+
+🔗 **Download Weights:**  https://drive.google.com/drive/folders/1lTbOm-9-yeJ0yTaTFLYtyzUCbuXBRr6G?usp=sharing
+
+After downloading, place the files inside the appropriate model directory before running the application.
+
+
+---
 
 ## ▶️ Installation & Usage
 
@@ -226,6 +354,23 @@ Future improvements include:
 * Integration with automated weed removal systems
 
 > 🔧 **Note:** The YOLOv11-based Phase 2 (KharpatNaashak) is being developed by my teammate **Mahi Singh**.
+
+
+## 🙏 Acknowledgement
+
+This project builds upon a previously trained YOLOv3 weed detection model and related implementation references used as the foundational base for further development and fine-tuning.
+
+The primary contributions of this project include:
+
+* Fine-tuning and adapting the detection model
+* Developing a complete Streamlit-based real-time application
+* Integrating image, video, and webcam detection
+* Adding analytical and reporting features for agricultural field analysis
+
+Proper credit is given to the original implementation and research resources that inspired the base detection framework.
+
+> 🔗 Original reference/source: [[Add GitHub repository or source link here](https://github.com/ravirajsinh45/Crop_and_weed_detection)
+
 
 ## 👨‍💻 Authors & Contributors
 
